@@ -30,6 +30,7 @@ function init() {
     const volume = slider.value;
     audio.volume = volume / 100;
 
+    //add the correct volume icon based on the slider value
     if (volume == 0) {
       volumeIcon.src = "assets/icons/volume-level-0.svg";
       volumeIcon.alt = "Volume at Level 0";
@@ -47,11 +48,13 @@ function init() {
 
   //Play button
   playButton.addEventListener("click", function () {
+    // Do not play audio if "select" is chosen
     if (dropdown.value === "select") {
       return;
     }
     audio.play();
 
+    //add confetti if party horn is selected
     if (dropdown.value == "party-horn") {
       const jsConfetti = new JSConfetti();
       jsConfetti.addConfetti();
